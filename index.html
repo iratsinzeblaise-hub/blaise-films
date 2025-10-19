@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BLAISE COOKIES — Film supplier</title>
+  <meta name="description" content="Blaise showPage Film Trading — buying, selling, and distributing films worldwide." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#d9a21a;--bg:#060606;--muted:rgba(255,255,255,0.72);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;color:#fff;background:#000}
+
+    /* Global layout */
+    header{position:fixed;inset:0 0 auto 0;height:72px;display:flex;align-items:center;justify-content:center;z-index:60}
+    .nav-wrap{width:100%;max-width:1200px;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand .logo{font-weight:800;font-size:20px;color:var(--accent);letter-spacing:1px}
+    nav{display:flex;gap:12px}
+    nav a{color:rgba(255,255,255,0.9);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600}
+    nav a.active{background:rgba(255,255,255,0.04);box-shadow:inset 0 -2px 0 rgba(255,255,255,0.02)}
+
+    /* Hero / background */
+    .hero{min-height:56vh;display:flex;align-items:center;justify-content:center;padding:96px 20px 40px;background-image:linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.85)),url('https://images.unsplash.com/photo-1505685296765-3a2736de412f?auto=format&fit=crop&w=1950&q=80');background-size:cover;background-position:center;}
+    .hero .card{max-width:1100px;width:100%;display:grid;grid-template-columns:1fr 340px;gap:26px;padding:28px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.25));box-shadow:0 18px 60px rgba(0,0,0,0.7)}
+    .hero h1{font-size:44px;margin:0 0 8px 0}
+    .hero p{margin:0 0 16px;color:var(--muted)}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700}
+    .btn-primary{background:var(--accent);color:#070707}
+    .btn-ghost{border:1px solid rgba(255,255,255,0.08);color:#fff}
+
+    /* Main content */
+    main{max-width:1200px;margin:-40px auto 80px;padding:0 20px;position:relative;z-index:10}
+    section.page{display:none;padding:28px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.3));box-shadow:0 12px 40px rgba(0,0,0,0.6);margin-bottom:18px}
+    section.page.active{display:block}
+    h2{margin:0 0 12px 0}
+
+    /* Catalog grid */
+    .catalog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+    .film-card{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px}
+    .film-card img{width:100%;height:150px;object-fit:cover;border-radius:8px}
+    .film-meta{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+    .chip{padding:6px 8px;border-radius:8px;background:rgba(0,0,0,0.45);font-weight:600}
+
+    /* Partners / logos */
+    .partners{display:flex;flex-wrap:wrap;gap:12px}
+    .partner{min-width:140px;padding:12px;border-radius:8px;background:rgba(255,255,255,0.02);text-align:center}
+
+    /* News list */
+    .news-list{display:flex;flex-direction:column;gap:12px}
+    .news-item{padding:12px;border-radius:8px;background:rgba(0,0,0,0.35)}
+
+    /* Contact form */
+    form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    form input, form textarea{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff}
+    form textarea{grid-column:1/-1}
+    .muted{color:var(--muted)}
+
+    footer{color:rgba(255,255,255,0.6);text-align:center;padding:28px 12px}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero .card{grid-template-columns:1fr}
+      header{position:static}
+      .nav-wrap{padding:8px 14px}
+      form{grid-template-columns:1fr}
+      .film-card img{height:200px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-wrap">
+      <div class="brand">
+        <div class="logo">BLAISE showPage</div>
+        <div style="color:var(--muted);font-weight:600">Film supplying · Distribution · Rights</div>
+      </div>
+      <nav id="site-nav">
+        <a href="#home" data-target="home" class="active">Home</a>
+        <a href="#about" data-target="about">About</a>
+        <a href="#catalog" data-target="catalog">Films</a>
+        <a href="#distribution" data-target="distribution">Distribution</a>
+        <a href="#partners" data-target="partners">Partners</a>
+        <a href="#news" data-target="news">News</a>
+        <a href="#contact" data-target="contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="hero">
+    <div class="card">
+      <div>
+        <h1>BLAISE showPage — Film supplying</h1>
+        <p>We connect films with the right markets. Buying, selling and licensing film rights across territories — theatrical, streaming, and broadcast.</p>
+        <a class="btn btn-primary" href="#catalog" data-target="catalog">Explore Catalog</a>
+        <a class="btn btn-ghost" href="mailto:iratsinzeblaise@gmail.com">Contact Sales</a>
+
+        <div style="margin-top:18px;color:var(--muted)"><strong>Email:</strong> <a href="mailto:iratsinzeblaise@gmail.com">iratsinzeblaise@gmail.com</a> • <strong>Based:</strong> Kigali, Rwanda</div>
+      </div>
+
+      <aside style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;gap:10px;align-items:center">
+          <div style="height:84px;width:84px;border-radius:12px;background:linear-gradient(135deg,#111,#222);display:flex;align-items:center;justify-content:center;font-weight:800">BC</div>
+          <div>
+            <div style="font-weight:800">Blaise showPage</div>
+            <div class="muted">Film Trader & Distributor</div>
+          </div>
+        </div>
+
+        <div style="padding:10px;border-radius:8px;background:rgba(0,0,0,0.35);font-size:14px">
+          <strong>Specialties:</strong>
+          <div class="muted">Acquisitions · Sales · International Licensing · SVOD/AVOD deals</div>
+        </div>
+
+        <div style="margin-top:auto;font-size:13px;color:var(--muted)">Curated catalog • Secure licensing • Global reach</div>
+      </aside>
+    </div>
+  </section>
+
+  <main>
+    <!-- About -->
+    <section id="about" class="page" aria-labelledby="about-label">
+      <h2 id="about-label">About Us</h2>
+      <p>Blaise showPage Film Trading is a boutique film trading house focused on connecting independent filmmakers and rights holders with distributors, platforms and buyers worldwide. We negotiate deals for theatrical release, streaming windows, and broadcast licensing.</p>
+      <p><strong>Mission:</strong> To find the best home and audience for every film we represent.</p>
+      <p><strong>What we do:</strong> Rights assessment, market strategy, festival placement support, licensing negotiations, and post-sale reporting.</p>
+    </section>
+
+    <!-- Catalog -->
+    <section id="catalog" class="page" aria-labelledby="catalog-label">
+      <h2 id="catalog-label">Films — Catalog</h2>
+      <p class="muted">Browse a curated selection of films currently available for sale, co-financing, or territorial licensing.</p>
+
+      <div class="catalog-grid" id="catalog-grid">
+        <!-- Sample film cards -->
+        <article class="film-card">
+          <img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=1200&q=60" alt="Film poster">
+          <h3>Nightfall Over Kigali</h3>
+          <div class="film-meta"><div class="muted">Drama · 2023</div><div class="chip">Territories: World</div></div>
+          <p class="muted" style="margin-top:8px">Director: A. Ntaganda — A powerful drama exploring memory and reconciliation in Rwanda.</p>
+          <div style="margin-top:10px;display:flex;gap:8px"><a class="btn btn-ghost" href="#" onclick="alert('Request sent for Nightfall Over Kigali')">Request Info</a><a class="btn" style="background:rgba(255,255,255,0.04);color:var(--accent)" href="#" onclick="alert('Added to inquiry')">Add to inquiry</a></div>
+        </article>
+
+        <article class="film-card">
+          <img src="https://images.unsplash.com/photo-1517604931442-7da36c5a1a1b?auto=format&fit=crop&w=1200&q=60" alt="Film poster">
+          <h3>The Last Projectionist</h3>
+          <div class="film-meta"><div class="muted">Documentary · 2021</div><div class="chip">Territories: EMEA</div></div>
+          <p class="muted" style="margin-top:8px">Director: L. Mutesi — A heartfelt documentary about cinema cultures in East Africa.</p>
+          <div style="margin-top:10px;display:flex;gap:8px"><a class="btn btn-ghost" href="#" onclick="alert('Request sent for The Last Projectionist')">Request Info</a><a class="btn" style="background:rgba(255,255,255,0.04);color:var(--accent)" href="#" onclick="alert('Added to inquiry')">Add to inquiry</a></div>
+        </article>
+
+        <article class="film-card">
+          <img src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=1200&q=60" alt="Film poster">
+          <h3>Frames of Tomorrow</h3>
+          <div class="film-meta"><div class="muted">Sci‑Fi · 2024</div><div class="chip">Territories: APAC</div></div>
+          <p class="muted" style="margin-top:8px">Director: S. Kawawa — Futuristic short exploring memory and AI in film preservation.</p>
+          <div style="margin-top:10px;display:flex;gap:8px"><a class="btn btn-ghost" href="#" onclick="alert('Request sent for Frames of Tomorrow')">Request Info</a><a class="btn" style="background:rgba(255,255,255,0.04);color:var(--accent)" href="#" onclick="alert('Added to inquiry')">Add to inquiry</a></div>
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- Distribution -->
+    <section id="distribution" class="page" aria-labelledby="dist-label">
+      <h2 id="dist-label">Distribution & Licensing</h2>
+      <p>We offer tailored distribution strategies depending on film genre, windowing goals and target territories. Services include:</p>
+      <ul>
+        <li>Rights evaluation and market mapping</li>
+        <li>Negotiation of licensing agreements (theatrical, TV, streaming)</li>
+        <li>Festival and market representation</li>
+        <li>Localized marketing introductions via partner networks</li>
+      </ul>
+      <p class="muted">To request a distribution strategy for a title, email <a href="mailto:iratsinzeblaise@gmail.com">iratsinzeblaise@gmail.com</a> with the subject line: <em>Distribution Request — [Film Title]</em>.</p>
+    </section>
+
+    <!-- Partners -->
+    <section id="partners" class="page" aria-labelledby="partners-label">
+      <h2 id="partners-label">Clients & Partners</h2>
+      <p>We've worked with boutique labels, independent producers, and regional broadcasters. Selected partners:</p>
+      <div class="partners">
+        <div class="partner">Kigali Film Lab</div>
+        <div class="partner">Sunset Distributors</div>
+        <div class="partner">Pan‑Africa Streams</div>
+        <div class="partner">CineWorld Markets</div>
+      </div>
+
+      <p style="margin-top:12px" class="muted">Want to partner? Email <a href="mailto:iratsinzeblaise@gmail.com">iratsinzeblaise@gmail.com</a>.</p>
+    </section>
+
+    <!-- News -->
+    <section id="news" class="page" aria-labelledby="news-label">
+      <h2 id="news-label">News & Updates</h2>
+      <div class="news-list">
+        <article class="news-item"><strong>Sept 2025 —</strong> Blaise showPage acquired North American rights to <em>Nightfall Over Kigali</em>. <span class="muted">(Announcement)</span></article>
+        <article class="news-item"><strong>Jun 2025 —</strong> Partnership signed with Pan‑Africa Streams for regional SVOD distribution. <span class="muted">(Partnership)</span></article>
+      </div>
+
+      <p style="margin-top:12px" class="muted">Want to be notified of new acquisitions? Subscribe via email: <a href="mailto:iratsinzeblaise@gmail.com">iratsinzeblaise@gmail.com</a></p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="page" aria-labelledby="contact-label">
+      <h2 id="contact-label">Contact</h2>
+      <p class="muted">For rights inquiries, distribution proposals, or partnership requests — email us directly or use the form below.</p>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;gap:18px;flex-wrap:wrap">
+          <div style="padding:12px;border-radius:10px;background:rgba(255,255,255,0.02)">Email: <a href="mailto:iratsinzeblaise@gmail.com">iratsinzeblaise@gmail.com</a></div>
+          <div style="padding:12px;border-radius:10px;background:rgba(255,255,255,0.02)">Phone: +250 793848854</div>
+          <div style="padding:12px;border-radius:10px;background:rgba(255,255,255,0.02)">Location: Muhanga, Rwanda</div>
+        </div>
+
+        <form onsubmit="event.preventDefault();handleContact(this)">
+          <input name="name" placeholder="Your name" required>
+          <input name="email" type="email" placeholder="Your email" required>
+          <textarea name="message" placeholder="Message" rows="6" required></textarea>
+          <button class="btn btn-primary" type="submit" style="grid-column:1/-1">Send message</button>
+        </form>
+
+        <div id="contact-result" class="muted" aria-live="polite"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>&copy; <span id="year"></span> BLAISE showPage — Film supplying • <a href="mailto:iratsinzeblaise@gmail.com">iratsinzeblaise@gmail.com</a></footer>
+
+  <script>
+    // Simple hash-based navigation for a single-file 7-page site
+    const pages = ['home','about','catalog','distribution','partners','news','contact'];
+    function showPage(target){
+      pages.forEach(p=>{
+        const el = document.getElementById(p);
+        if(!el) return;
+        if(p===target) el.classList.add('active'); else el.classList.remove('active');
+      });
+      // update active nav link
+      document.querySelectorAll('#site-nav a').forEach(a=>{
+        a.classList.toggle('active', a.dataset.target===target);
+      });
+      // scroll to top of main
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    function resolveHash(){
+      const hash = location.hash.replace('#','') || 'home';
+      if(pages.includes(hash)) return hash; return 'home';
+    }
+
+    window.addEventListener('hashchange', ()=> showPage(resolveHash()));
+    document.querySelectorAll('#site-nav a').forEach(a=>{
+      a.addEventListener('click', e=>{
+        // allow default behavior to update hash
+      });
+    });
+
+    // initialize pages
+    document.addEventListener('DOMContentLoaded', ()=>{
+      // attach ids for sections
+      document.querySelector('section.page#about')?.id && null;
+      // show initial page
+      showPage(resolveHash());
+      document.getElementById('year').textContent = new Date().getFullYear();
+    });
+
+    // Contact form handler (demo)
+    function handleContact(form){
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+      if(!name||!email||!message) return;
+      // This demo does NOT send email. Show a friendly message and provide the mailto link.
+      const mailto = `mailto:iratsinzeblaise@gmail.com?subject=${encodeURIComponent('Website inquiry from '+name)}&body=${encodeURIComponent(message+'\n\nReply to: '+email)}`;
+      const result = document.getElementById('contact-result');
+      result.innerHTML = `Thanks ${name}! Click <a href="${mailto}">here to open your email client</a> to send the inquiry, or email <a href=\"mailto:iratsinzeblaise@gmail.com\">iratsinzeblaise@gmail.com</a> directly.`;
+      form.reset();
+    }
+  </script>
+</body>
+</html>
+]
